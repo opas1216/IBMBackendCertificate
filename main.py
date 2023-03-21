@@ -23,3 +23,6 @@ text3 = text2.replace('Michael', 'Julie')
 print(f"Text3 {text3}")
 print(f"Type of {text2.split()} is {type(text2.split())}")
 print(f"Count of Michael = {text2.count('Michael')}")
+
+
+
