@@ -3,7 +3,7 @@
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
-import numpy as np
+# import numpy as np
 
 
 
@@ -58,38 +58,26 @@ def shuffle(input_list, card_number):
     return input_list
 
 
-# Let's チャレンジ！！
-amount = int(input())
-print(f"Works amount = {amount}")
-work_list = []
-target_days = []
-start_index, end_index, result = 0, 0, 0
-
-for number in range(amount):
-    print(f"Input the {number+1}'s work: ")
-    work_list.append(input().split())
-print("XXXXXX")
-print(f"Origin work_list = {work_list}")
-
-for group in work_list:
-    while(len(target_days) < int(group[1])):
-        target_days.append('N')
-    for date in range(int(group[0])-1, int(group[1]),):
-        target_days[date] = 'Y'
-
-print(f"After setting = {target_days}")
-for index, element in enumerate(target_days):
-    if element == 'N':
-        result = max(result, index-1-start_index)
-        start_index = index
-    else:
 
 
 
+input_data = []
 
+while(input() != ''):
+    print(input_line)
 
-
-
+input_line = input()
+print(input_line)
+if input_line == '':
+    # break
+    pass
+else:
+    input_data.append(input_line)
+print(f"final = {input_data}")
+result = 0
+for element in input_data:
+    result += int(element)
+print(result)
 
 
 
