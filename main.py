@@ -1,12 +1,23 @@
-# This is a sample Python script.
+import json
+from ibm_watson import LanguageTranslatorV3
+from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
+import os
+from dotenv import load_dotenv
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+load_dotenv()
 
-# import numpy as np
+apikey = '2bD4baLDk4-suALxSjoLyXDJxj72hiVDmvTuwzXO1uAk'
+url = 'https://api.us-south.language-translator.watson.cloud.ibm.com/instances/da21a171-cebd-4a9e-a8e8-d1ff371ef524'
 
+authenticator = IAMAuthenticator(apikey)
+language_translator = LanguageTranslatorV3(
+    version='2023-04-09',
+    authenticator=authenticator
+)
 
+language_translator.set_service_url(url)
 
+language_translator.set_disable_ssl_verification(True)
 
 class AnalysedText(object):
     def __init__(self, text):
@@ -60,25 +71,33 @@ def shuffle(input_list, card_number):
 
 
 
+def englishToFrench(englishText):
+    #write the code here
+    frenchText = ""
+    translation = language_translator.translate(
+    text = englishText,
+    model_id = 'en-fr').get_result()
+    print(json.dumps(translation, indent=2, ensure_ascii=False))
+    print(f"translation= {translation['translations'][0]['translation']}")
+    # frenchText = translation[]
+    return frenchText
 
-input_data = []
 
-while(input() != ''):
-    print(input_line)
+def frenchToEnglish(frenchText):
+    #write the code here
+    englishText = ""
+    translation = language_translator.translate(
+    text = frenchText,
+    model_id = 'fr-en').get_result()
+    print(json.dumps(translation, indent=2, ensure_ascii=False))
+    print(f"translation= {translation}")
+    return englishText
 
-input_line = input()
-print(input_line)
-if input_line == '':
-    # break
-    pass
-else:
-    input_data.append(input_line)
-print(f"final = {input_data}")
-result = 0
-for element in input_data:
-    result += int(element)
-print(result)
 
+# frenchToEnglish("")
+frenchToEnglish("Bonjour")
+# englishToFrench("")
+englishToFrench("Hello")
 
 
 

@@ -1,6 +1,6 @@
 import unittest
 
-from mymodule import square, double, add
+from mymodule import square, double, add, returnString
 
 class TestSquare(unittest.TestCase):
     def test_square(self):
@@ -21,8 +21,10 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(add(2.3000, 4.300), 6.6)
         self.assertNotEqual(add(-2, -2), 0)
 
-
-
+    def test_returnString(self):
+        self.assertNotEqual(returnString(),"How are you","They are equal")
+        self.assertNotEqual(returnString(), "Hello", "They are equal")
+        self.assertEqual(returnString(),"How are you","They are Not equal")
 class TestDouble(unittest.TestCase):
     def test1(self):
         self.assertEqual(double(2), 4) # test when 2 is given as input the output is 4.
