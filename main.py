@@ -54,12 +54,12 @@ def shuffle(input_list, card_number):
 
     if len(partition_list)%2 == 0:
         for index in range(int(len(partition_list)/2)):
-            partition_list[index], partition_list[len(partition_list)-1-index] = partition_list[len(partition_list)-1-index], partition_list[index]
+            partition_list[index], partition_list[len(partition_list)-1-index] = \
+                partition_list[len(partition_list)-1-index], partition_list[index]
     else:
         for index in range(len(partition_list)//2):
-            partition_list[index], partition_list[len(partition_list) - 1 - index] = partition_list[
-                                                                                         len(partition_list) - 1 - index], \
-                                                                                     partition_list[index]
+            partition_list[index], partition_list[len(partition_list) - 1 - index] = \
+                partition_list[len(partition_list) - 1 - index], partition_list[index]
     print(f"After shuffle = {partition_list}")
     input_list = []
     for group in partition_list:
